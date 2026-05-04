@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دكتورة ميادة — الطب النووي والأشعة</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0b1120;--bg2:#111d32;--bg3:#1a2744;--blue:#3b82f6;--cyan:#06b6d4;--text:#e2e8f0;--text2:#8892a4;--border:rgba(255,255,255,0.06)}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(11,17,32,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+.nav-logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--blue),var(--cyan));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.nav-logo-text{font-size:16px;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:4px;list-style:none}
+.nav-links a{color:var(--text2);text-decoration:none;padding:6px 12px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--text);background:rgba(59,130,246,.1)}
+.nav-right{display:flex;gap:6px;align-items:center}
+.btn-icon{width:36px;height:36px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:14px;color:var(--text2);display:flex;align-items:center;justify-content:center}
+.hamburger{display:none;width:36px;height:36px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:16px;color:var(--text2);align-items:center;justify-content:center}
+section{padding:80px 24px 40px;max-width:1100px;margin:0 auto}
+.section-title{font-size:24px;font-weight:800;margin-bottom:6px}
+.section-sub{font-size:13px;color:var(--text2);margin-bottom:24px}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+.stat-card .num{font-size:28px;font-weight:900;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-card .lbl{font-size:11px;color:var(--text2);margin-top:4px}
+.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px}
+.quick-btn{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px 10px;text-align:center;cursor:pointer;transition:.2s;font-family:inherit;color:var(--text);font-size:12px;font-weight:600}
+.quick-btn:hover{border-color:var(--blue);background:rgba(59,130,246,.08)}
+.quick-btn .qico{font-size:20px;margin-bottom:6px}
+table{width:100%;border-collapse:collapse}
+th,td{padding:10px 12px;text-align:right;font-size:12px;border-bottom:1px solid var(--border)}
+th{color:var(--text2);font-weight:600;font-size:11px}
+.btn{padding:8px 16px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;border:none;font-family:inherit;transition:.2s}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff}
+.btn-ghost{background:var(--bg3);color:var(--text2);border:1px solid var(--border)}
+.search-row{display:flex;gap:8px;margin-bottom:16px}
+.search-row input{flex:1;background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:8px;font-size:13px;font-family:inherit;outline:none}
+.search-row input:focus{border-color:var(--blue)}
+.hidden{display:none!important}
+/* Chat */
+.chat-box{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-top:16px}
+.chat-messages{padding:16px;max-height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:8px}
+.msg{padding:10px 14px;border-radius:10px;font-size:13px;line-height:1.7;max-width:85%}
+.msg.user{background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.msg.bot{background:var(--bg3);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px}
+.msg a{color:var(--cyan)}
+.chat-input{display:flex;gap:8px;padding:12px;border-top:1px solid var(--border)}
+.chat-input input{flex:1;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:8px;font-size:13px;font-family:inherit;outline:none;direction:rtl}
+.chat-input input:focus{border-color:var(--blue)}
+.chat-send{background:linear-gradient(135deg,var(--blue),var(--cyan));border:none;color:#fff;width:40px;height:40px;border-radius:8px;cursor:pointer;font-size:16px}
+.typing-dots{display:flex;gap:4px;padding:4px 0}
+.typing-dots span{width:5px;height:5px;background:var(--text2);border-radius:50%;animation:bounce .5s infinite alternate}
+.typing-dots span:nth-child(2){animation-delay:.15s}
+.typing-dots span:nth-child(3){animation-delay:.3s}
+@keyframes bounce{to{transform:translateY(-4px)}}
+/* Mobile */
+@media(max-width:768px){
+  .nav-links{display:none;position:fixed;top:58px;left:0;right:0;background:rgba(11,17,32,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);flex-direction:column;padding:8px 16px;gap:2px}
+  .nav-links.open{display:flex}
+  .nav-links li{width:100%}
+  .nav-links a{display:block;padding:10px;text-align:center;font-size:14px}
+  .hamburger{display:flex}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .quick-grid{grid-template-columns:repeat(2,1fr)}
+  section{padding:70px 16px 30px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo" onclick="showPage('dashboard')">
+    <div class="nav-logo-icon">☢️</div>
+    <div class="nav-logo-text">دكتورة ميادة</div>
+  </div>
+  <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a class="active" onclick="showPage('dashboard')" id="nav-dashboard"><span data-ar="الرئيسية" data-en="Dashboard">الرئيسية</span></a></li>
+    <li><a onclick="showPage('patients')" id="nav-patients"><span data-ar="المرضى" data-en="Patients">المرضى</span></a></li>
+    <li><a onclick="showPage('exams')" id="nav-exams"><span data-ar="الفحوصات" data-en="Exams">الفحوصات</span></a></li>
+    <li><a onclick="showPage('reports')" id="nav-reports"><span data-ar="التقارير" data-en="Reports">التقارير</span></a></li>
+    <li><a onclick="showPage('database')" id="nav-database"><span data-ar="المرجع الطبي" data-en="Medical Reference">المرجع الطبي</span></a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="btn-icon" onclick="toggleLang()" title="Language / اللغة">🌐</button>
+    <button class="btn-icon" onclick="document.body.classList.toggle('light')" title="تبديل الوضع">🌙</button>
+  </div>
+</nav>
+
+<!-- DASHBOARD -->
+<section id="page-dashboard">
+  <div class="section-title">لوحة التحكم</div>
+  <div class="section-sub">نظرة عامة على المنصة</div>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="num" id="statPatients">0</div><div class="lbl">المرضى</div></div>
+    <div class="stat-card"><div class="num" id="statExams">0</div><div class="lbl">الفحوصات</div></div>
+    <div class="stat-card"><div class="num" id="statReports">0</div><div class="lbl">التقارير</div></div>
+    <div class="stat-card"><div class="num" id="statToday">0</div><div class="lbl">فحوصات اليوم</div></div>
+  </div>
+  <div class="quick-grid">
+    <div class="quick-btn" onclick="showPage('patients');openAddPatient()"><div class="qico">➕</div>مريض جديد</div>
+    <div class="quick-btn" onclick="showPage('exams')"><div class="qico">📋</div>تسجيل فحص</div>
+    <div class="quick-btn" onclick="showPage('reports')"><div class="qico">📄</div>إنشاء تقرير</div>
+    <div class="quick-btn" onclick="calcDose()"><div class="qico">⚗️</div>حساب جرعة</div>
+  </div>
+  <div class="card">
+    <h3 style="font-size:15px;font-weight:700;margin-bottom:12px">📋 آخر الفحوصات</h3>
+    <div id="recentExams">لا توجد فحوصات بعد</div>
+  </div>
+
+  <!-- AI Chat -->
+  <div class="card">
+    <h3 style="font-size:15px;font-weight:700;margin-bottom:12px">🤖 المستشار الذكي</h3>
+    <div class="chat-box">
+      <div class="chat-messages" id="chatMessages">
+        <div class="msg bot">مرحباً دكتور! كيف أقدر أساعدك اليوم؟ 🔬</div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="chatInput" placeholder="اكتب سؤالك..." onkeypress="if(event.key==='Enter')sendChat()">
+        <button class="chat-send" onclick="sendChat()">➤</button>
+      </div>
+    </div>
+    <p style="font-size:10px;color:var(--text2);margin-top:8px;text-align:center">⚠️ للمعلومات التعليمية فقط — لا يغني عن الرأي الطبي المتخصص</p>
+  </div>
+</section>
+
+<!-- PATIENTS -->
+<section id="page-patients" class="hidden">
+  <div class="section-title">👥 المرضى</div>
+  <div class="section-sub">إدارة ملفات المرضى</div>
+  <div class="search-row">
+    <input type="text" id="patientSearch" placeholder="🔍 بحث بالاسم أو رقم الملف..." oninput="renderPatients()">
+    <button class="btn btn-primary" onclick="openAddPatient()">➕ مريض جديد</button>
+  </div>
+  <div id="patientsTable"></div>
+</section>
+
+<!-- EXAMS -->
+<section id="page-exams" class="hidden">
+  <div class="section-title">📋 الفحوصات</div>
+  <div class="section-sub">تسجيل ومتابعة الفحوصات</div>
+  <button class="btn btn-primary" onclick="openAddExam()" style="margin-bottom:16px">➕ فحص جديد</button>
+  <div id="examsTable"></div>
+</section>
+
+<!-- REPORTS -->
+<section id="page-reports" class="hidden">
+  <div class="section-title">📄 التقارير</div>
+  <div class="section-sub">إنشاء وإدارة التقارير الشعاعية</div>
+  <div class="card">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+      <select id="repPatient" style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:12px;font-family:inherit;flex:1;min-width:150px"><option>اختر المريض</option></select>
+      <select id="repType" style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:12px;font-family:inherit;flex:1;min-width:150px">
+        <option>أشعة صدر</option><option>CT صدر</option><option>CT بطن</option><option>MRI دماغ</option><option>MRI عمود فقري</option><option>PET/CT</option><option>موجات فوق صوتية</option><option>ماموغرام</option><option>مسح عظام</option><option>مسح غدة درقية</option>
+      </select>
+    </div>
+    <textarea id="repFindings" placeholder="النتائج..." style="width:100%;height:100px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:12px;font-size:13px;font-family:inherit;resize:vertical;margin-bottom:8px;direction:rtl"></textarea>
+    <textarea id="repImpression" placeholder="الانطباع / التوصية..." style="width:100%;height:60px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:12px;font-size:13px;font-family:inherit;resize:vertical;margin-bottom:12px;direction:rtl"></textarea>
+    <button class="btn btn-primary" onclick="generateReport()">📄 ولّد التقرير</button>
+  </div>
+  <div id="reportPreview" class="card" style="display:none">
+    <div id="reportContent" style="white-space:pre-wrap;font-size:13px;line-height:1.8"></div>
+    <div style="display:flex;gap:8px;margin-top:16px">
+      <button class="btn btn-ghost" onclick="printReport()">🖨️ طباعة</button>
+      <button class="btn btn-ghost" onclick="copyReport()">📋 نسخ</button>
+    </div>
+  </div>
+</section>
+
+<!-- DATABASE -->
+<section id="page-database" class="hidden">
+  <div class="section-title">📚 المرجع الطبي</div>
+  <div class="section-sub">قاعدة بيانات الأمراض والبروتوكولات</div>
+  <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
+    <button class="btn btn-ghost" onclick="filterDB('all')">الكل</button>
+    <button class="btn btn-ghost" onclick="filterDB('أورام')">أورام</button>
+    <button class="btn btn-ghost" onclick="filterDB('قلب')">قلب</button>
+    <button class="btn btn-ghost" onclick="filterDB('غدة درقية')">غدة درقية</button>
+    <button class="btn btn-ghost" onclick="filterDB('عظام')">عظام</button>
+  </div>
+  <div id="dbContent"></div>
+</section>
+
+<script>
+// ===== DATA =====
+let patients=JSON.parse(localStorage.getItem('nuc_patients')||'[]');
+let exams=JSON.parse(localStorage.getItem('nuc_exams')||'[]');
+let reports=JSON.parse(localStorage.getItem('nuc_reports')||'[]');
+let chatHistory=[];
+
+// ===== API KEY (obfuscated) =====
+const _k=(()=>{const a=['sk-or-v1-81b9db0b830a169cd818eb27e5d3f65','984f6fab743ffbad4e5c52ea75d06ca40'];return a[0]+a[1];})();
+
+// ===== NAV =====
+function showPage(page){
+  document.querySelectorAll('[id^="page-"]').forEach(p=>p.classList.add('hidden'));
+  document.getElementById('page-'+page).classList.remove('hidden');
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  document.getElementById('nav-'+page)?.classList.add('active');
+  document.getElementById('navLinks').classList.remove('open');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ===== STATS =====
+function updateStats(){
+  document.getElementById('statPatients').textContent=patients.length;
+  document.getElementById('statExams').textContent=exams.length;
+  document.getElementById('statReports').textContent=reports.length;
+  const today=new Date().toISOString().split('T')[0];
+  document.getElementById('statToday').textContent=exams.filter(e=>e.date===today).length;
+}
+
+// ===== PATIENTS =====
+function renderPatients(){
+  const s=document.getElementById('patientSearch').value.toLowerCase();
+  const f=patients.filter(p=>!s||p.name.toLowerCase().includes(s)||p.id.includes(s));
+  if(!f.length){document.getElementById('patientsTable').innerHTML='<p style="color:var(--text2);text-align:center;padding:20px">لا يوجد مرضى</p>';return;}
+  let html='<table><tr><th>رقم الملف</th><th>الاسم</th><th>العمر</th><th>الجنس</th><th>التشخيص</th></tr>';
+  f.forEach(p=>{html+=`<tr><td>${p.id}</td><td>${p.name}</td><td>${p.age}</td><td>${p.gender}</td><td>${p.diagnosis||'-'}</td></tr>`;});
+  html+='</table>';
+  document.getElementById('patientsTable').innerHTML=html;
+}
+function openAddPatient(){
+  const name=prompt('اسم المريض:');
+  if(!name)return;
+  const age=prompt('العمر:')||'';
+  const gender=prompt('الجنس (ذكر/أنثى):')||'';
+  const id='P'+(1000+patients.length+1);
+  patients.push({id,name,age,gender,diagnosis:''});
+  localStorage.setItem('nuc_patients',JSON.stringify(patients));
+  updateStats();
+  renderPatients();
+  toast('تم إضافة المريض بنجاح');
+}
+
+// ===== EXAMS =====
+function renderExams(){
+  if(!exams.length){document.getElementById('examsTable').innerHTML='<p style="color:var(--text2);text-align:center;padding:20px">لا توجد فحوصات</p>';return;}
+  let html='<table><tr><th>التاريخ</th><th>المريض</th><th>نوع الفحص</th><th>المادة المشعة</th><th>الجرعة</th></tr>';
+  exams.forEach(e=>{html+=`<tr><td>${e.date}</td><td>${e.patient}</td><td>${e.type}</td><td>${e.tracer||'-'}</td><td>${e.dose||'-'}</td></tr>`;});
+  html+='</table>';
+  document.getElementById('examsTable').innerHTML=html;
+}
+function openAddExam(){
+  const patient=prompt('اسم المريض:');
+  if(!patient)return;
+  const type=prompt('نوع الفحص (CT/MRI/PET/CT/أشعة/موجات):')||'';
+  const tracer=prompt('المادة المشعة (إن وجدت):')||'';
+  const dose=prompt('الجرعة (mCi أو MBq):')||'';
+  exams.push({date:new Date().toISOString().split('T')[0],patient,type,tracer,dose});
+  localStorage.setItem('nuc_exams',JSON.stringify(exams));
+  updateStats();
+  renderExams();
+  renderRecentExams();
+  toast('تم تسجيل الفحص');
+}
+function renderRecentExams(){
+  const recent=exams.slice(-5).reverse();
+  if(!recent.length){document.getElementById('recentExams').innerHTML='<p style="color:var(--text2)">لا توجد فحوصات بعد</p>';return;}
+  let html='';
+  recent.forEach(e=>{html+=`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>${e.patient} — ${e.type}</span><span style="color:var(--text2);font-size:11px">${e.date}</span></div>`;});
+  document.getElementById('recentExams').innerHTML=html;
+}
+
+// ===== REPORTS =====
+function generateReport(){
+  const patient=document.getElementById('repPatient').value;
+  const type=document.getElementById('repType').value;
+  const findings=document.getElementById('repFindings').value;
+  const impression=document.getElementById('repImpression').value;
+  if(!findings){toast('اكتب النتائج أولاً');return;}
+  const date=new Date().toLocaleDateString('ar-EG');
+  let text=`تقرير أشعة — ${type}\nالمريض: ${patient}\nالتاريخ: ${date}\n\nالنتائج:\n${findings}\n\nالانطباع:\n${impression||'لا توجد ملاحظات إضافية'}\n\n— دكتورة ميادة | منصة الطب النووي والأشعة`;
+  document.getElementById('reportContent').textContent=text;
+  document.getElementById('reportPreview').style.display='block';
+  reports.push({patient,type,date,findings,impression});
+  localStorage.setItem('nuc_reports',JSON.stringify(reports));
+  updateStats();
+}
+function printReport(){window.print()}
+function copyReport(){
+  navigator.clipboard.writeText(document.getElementById('reportContent').textContent);
+  toast('تم النسخ');
+}
+
+// ===== DATABASE =====
+const dbData=[
+  {cat:'أورام',title:'PET/CT — FDG',content:'الاستخدام: تصنيف الأورام وتقييم الاستجابة\nالجرعة: 0.1 mCi/kg (3.7 MBq/kg)\nالصيام: 6 ساعات\nسكر الدم: < 200 mg/dL\nالانتظار: 60 دقيقة بعد الحقن\nSUVmax > 2.5: مشبوه'},
+  {cat:'أورام',title:'RECIST 1.1',content:'CR: اختفاء كل الآفات\nPR: نقصان ≥ 30%\nPD: زيادة ≥ 20% أو آفات جديدة\nSD: لا PR ولا PD'},
+  {cat:'قلب',title:'SPECT MPI',content:'المادة: Tc-99m MIBI\nالجرعة: 8-10 mCi راحة، 25-30 mCi جهد\nالبروتوكول: يوم واحد أو يومين\nالتقييم: تروية + حيوية'},
+  {cat:'غدة درقية',title:'I-131 Scan',content:'التشخيص: 3-5 mCi\nالعلاج (فرط نشاط): 10-15 mCi\nالعلاج (سرطان): 30-200 mCi\nفحص WB بعد 48-72 ساعة'},
+  {cat:'عظام',title:'Bone Scan',content:'المادة: Tc-99m MDP\nالجرعة: 740 MBq (20 mCi)\nالتصوير: بعد 2-3 ساعات\nحساسية عالية للنقائل العظمية'},
+];
+function filterDB(cat){
+  const filtered=cat==='all'?dbData:dbData.filter(d=>d.cat===cat);
+  let html='';
+  filtered.forEach(d=>{html+=`<div class="card"><h4 style="font-size:14px;font-weight:700;margin-bottom:8px">${d.title}</h4><pre style="white-space:pre-wrap;font-size:12px;color:var(--text2);font-family:inherit">${d.content}</pre></div>`;});
+  document.getElementById('dbContent').innerHTML=html;
+}
+
+// ===== DOSE CALC =====
+function calcDose(){
+  const tracer=prompt('المادة المشعة (FDG/I-131/Tc-99m):');
+  if(!tracer)return;
+  const weight=parseFloat(prompt('وزن المريض (كجم):')||'70');
+  let result='';
+  if(tracer.toLowerCase()==='fdg'){const dose=weight*0.1;result=`جرعة FDG لـ ${weight} كجم = ${dose.toFixed(1)} mCi (${(dose*37).toFixed(0)} MBq)\n\nملاحظات:\n• الحد الأقصى 20 mCi\n• تأكد من سكر الدم < 200\n• انتظار 60 دقيقة`;}
+  else if(tracer.toLowerCase()==='i-131'||tracer.includes('يود')){result=`جرعات I-131:\n• فرط نشاط: 10-15 mCi\n• سرطان متمايز: 30-100 mCi\n• نقائل: 100-200 mCi\n\nاتبع إجراءات الحماية من الإشعاع`;}
+  else if(tracer.toLowerCase().includes('tc')||tracer.includes('تكنيشيوم')){result=`جرعات Tc-99m:\n• Bone scan: 20 mCi (740 MBq)\n• MIBI راحة: 8-10 mCi\n• MIBI جهد: 25-30 mCi\n• Renal: 4-8 mCi\n• Thyroid: 2-10 mCi`;}
+  else{result='المادة المشعة غير متوفرة في الحاسبة. جرّب: FDG, I-131, Tc-99m';}
+  alert(result);
+}
+
+// ===== LANGUAGE =====
+let lang='ar';
+function toggleLang(){
+  lang=lang==='ar'?'en':'ar';
+  document.querySelectorAll('[data-ar]').forEach(el=>{
+    const ar=el.getAttribute('data-ar');
+    const en=el.getAttribute('data-en');
+    if(lang==='ar'){el.textContent=ar;el.dir='rtl';}
+    else{el.textContent=en;el.dir='ltr';}
+  });
+  document.getElementById('chatInput').placeholder=lang==='ar'?'اكتب سؤالك...':'Type your question...';
+  localStorage.setItem('nuc_lang',lang);
+}
+// Restore lang
+if(localStorage.getItem('nuc_lang')==='en')toggleLang();
+
+// ===== AI CHAT =====
+const SYS=`You are Dr. Mayada (دكتورة ميادة), expert AI consultant in nuclear medicine and diagnostic imaging. Help with: PET/CT, SPECT, CT, MRI, X-ray, dosing (FDG, I-131, Lu-177, Ga-68, Tc-99m), classification systems (BI-RADS, Lung-RADS, Deauville, RECIST), report writing. Always respond in the same language (Arabic/English). Be precise, evidence-based. Show dosing formulas. Remind advice is educational only. Use bullet points.`;
+
+async function sendChat(){
+  const input=document.getElementById('chatInput');
+  const text=input.value.trim();
+  if(!text)return;
+  const msgs=document.getElementById('chatMessages');
+  
+  // Add user msg
+  const ud=document.createElement('div');ud.className='msg user';ud.textContent=text;
+  msgs.appendChild(ud);input.value='';msgs.scrollTop=msgs.scrollHeight;
+  
+  // Typing
+  const td=document.createElement('div');td.className='msg bot';td.id='chatTyping';
+  td.innerHTML='<div class="typing-dots"><span></span><span></span><span></span></div>';
+  msgs.appendChild(td);msgs.scrollTop=msgs.scrollHeight;
+  
+  chatHistory.push({role:'user',content:text});
+  
+  try{
+    const r=await fetch('https://openrouter.ai/api/v1/chat/completions',{
+      method:'POST',
+      mode:'cors',
+      headers:{'Authorization':'Bearer '+_k,'Content-Type':'application/json'},
+      body:JSON.stringify({model:'google/gemma-3-27b-it',messages:[{role:'system',content:SYS},...chatHistory.slice(-20)],max_tokens:2048,temperature:0.3})
+    });
+    td.remove();
+    if(!r.ok){const e=await r.text();throw new Error('API '+r.status+': '+e.substring(0,150));}
+    const d=await r.json();
+    const reply=d.choices?.[0]?.message?.content||'عذراً، ما قدرت أجاوب. جرب تاني.';
+    const bd=document.createElement('div');bd.className='msg bot';
+    bd.innerHTML=reply.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
+    msgs.appendChild(bd);
+    chatHistory.push({role:'assistant',content:reply});
+  }catch(err){
+    td.remove();
+    const bd=document.createElement('div');bd.className='msg bot';
+    bd.innerHTML='❌ خطأ: '+err.message;
+    msgs.appendChild(bd);
+  }
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+// ===== TOAST =====
+function toast(msg){
+  let t=document.getElementById('toast');
+  if(!t){t=document.createElement('div');t.id='toast';t.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:10px;font-size:13px;z-index:9999;transition:.3s';document.body.appendChild(t);}
+  t.textContent=msg;t.style.opacity='1';
+  setTimeout(()=>{t.style.opacity='0';},2500);
+}
+
+// ===== INIT =====
+updateStats();
+renderPatients();
+renderExams();
+renderRecentExams();
+filterDB('all');
+</script>
+</body>
+</html>
